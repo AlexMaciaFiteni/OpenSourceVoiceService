@@ -1,4 +1,4 @@
-var myPythonScriptPath = 'MozillaTTSLib/launch_tts.py';
+var myPythonScriptPath = 'MozillaTTSLib/TTS/launch_tts.py';
 const {PythonShell} = require('python-shell');
 
 var pyOptions = {

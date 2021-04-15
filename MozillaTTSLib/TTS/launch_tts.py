@@ -15,8 +15,8 @@ from utils.text.symbols import symbols, phonemes
 from TTS.utils.visual import visualize
 
 # Set constants
-MODEL_PATH = './tts_model/best_model.pth.tar'
-CONFIG_PATH = './tts_model/config.json'
+MODEL_PATH = './tts_models/best_model.pth.tar'
+CONFIG_PATH = './tts_models/config.json'
 OUT_FILE = 'tts_out.wav'
 CONFIG = load_config(CONFIG_PATH)
 use_cuda = False
