@@ -18,4 +18,6 @@ pysh.end(function(err) {
 	};
 
 	console.log('Finished!');
+
+	require('child_process').fork('indexTTS.js');
 });

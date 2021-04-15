@@ -21,7 +21,7 @@ const req = http.request(options, res => {
 
   res.on('data', d => {
     process.stdout.write(d)
-	console.log();
+	  console.log();
   })
 });
 
@@ -31,27 +31,3 @@ req.on('error', error => {
 
 req.write(data);
 req.end();
-
-/*
-const https = require('https')
-const options = {
-  hostname: 'whatever.com',
-  port: 443,
-  path: '/todos',
-  method: 'GET'
-}
-
-const req = https.request(options, res => {
-  console.log(`statusCode: ${res.statusCode}`)
-
-  res.on('data', d => {
-    process.stdout.write(d)
-  })
-})
-
-req.on('error', error => {
-  console.error(error)
-})
-
-req.end()
-*/
