@@ -1,57 +1,22 @@
-const http = require('http')
+const util = require('util');
 
-const data = JSON.stringify({
-	'sender': 'test_user',
-	'message': 'Hi there!'
-});
+const callSTT = require('./helpers/callSTT.js').callSTT;
+const callTTS = require('./helpers/callTTS.js').callTTS;
+const callNLU = require('./helpers/callNLU.js').callNLU;
 
-const options = {
-  hostname: 'localhost',
-  port: 5005,
-  path: '/webhooks/rest/webhook',
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': data.length
-  }
-};
+callSTT('Usless parameter').then((msgstt) =>
+{
+  console.log("To process: ["+msgstt+"]");
 
-const req = http.request(options, res => {
-  console.log(`statusCode: ${res.statusCode}`)
+  msgstt = 'Hi there!'; // TODO:: Don't override
+  callNLU(msgstt).then((msgnlu) =>
+  {
+    console.log('Chatbot said: '+msgnlu);
+    msgnlu = 'This is a test sentence haha'; // TODO:: Don't override
+    callTTS(msgnlu).then((msgtts) =>
+    {
+      console.log("TTS finished, check the output file");
 
-  res.on('data', d => {
-    process.stdout.write(d)
-	console.log();
-  })
-});
-
-req.on('error', error => {
-  console.error(error)
-});
-
-req.write(data);
-req.end();
-
-/*
-const https = require('https')
-const options = {
-  hostname: 'whatever.com',
-  port: 443,
-  path: '/todos',
-  method: 'GET'
-}
-
-const req = https.request(options, res => {
-  console.log(`statusCode: ${res.statusCode}`)
-
-  res.on('data', d => {
-    process.stdout.write(d)
-  })
-})
-
-req.on('error', error => {
-  console.error(error)
-})
-
-req.end()
-*/
+    }).catch((msgerr) => {console.log(msgerr)});
+  }).catch((msgerr) => {console.log(msgerr)});
+}).catch((msgerr) => {console.log(msgerr)});

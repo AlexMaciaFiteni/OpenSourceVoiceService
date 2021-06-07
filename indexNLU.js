@@ -1,4 +1,4 @@
-const http = require('http')
+const http = require('http');
 
 const data = JSON.stringify({
 	'sender': 'test_user',

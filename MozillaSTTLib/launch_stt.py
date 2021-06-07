@@ -56,5 +56,4 @@ if __name__ == '__main__':
 	WAVE_OUTPUT_FILENAME = sys.argv[1]
 	#record_audio(WAVE_OUTPUT_FILENAME)
 	predicted_text = deepspeech_predict(WAVE_OUTPUT_FILENAME)
-	print('Detected text:')
 	print(predicted_text)

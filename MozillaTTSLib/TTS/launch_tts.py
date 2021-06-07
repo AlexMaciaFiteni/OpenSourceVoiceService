@@ -60,3 +60,4 @@ if __name__ == '__main__':
 	# TODO: Controlar si hay argumento 1
 	sentence =  sys.argv[1]
 	load_model(MODEL_PATH, sentence, CONFIG, use_cuda, OUT_FILE)
+	print('finished')
