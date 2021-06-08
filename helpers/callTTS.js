@@ -20,11 +20,10 @@ callTTS : function (reqMessage)
     };
     
     const req = http.request(options, res => {
-      console.log(`statusCode: ${res.statusCode}`);
+      if(res.statusCode != 200)
+        console.log(`statusCode: ${res.statusCode}`);
     
       res.on('data', d => {
-        //process.stdout.write(d)
-        //console.log();
         resolve(d);
       })
     });

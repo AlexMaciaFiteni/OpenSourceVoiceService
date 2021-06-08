@@ -20,7 +20,8 @@ callNLU : function (reqMessage)
     };
     
     const req = http.request(options, res => {
-      console.log(`statusCode: ${res.statusCode}`)
+      if(res.statusCode != 200)
+        console.log(`statusCode: ${res.statusCode}`)
     
       res.on('data', d => {
         resolve(d);
