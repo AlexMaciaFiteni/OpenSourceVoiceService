@@ -4,18 +4,14 @@ module.exports = {
 callSTT : function (reqMessage)
 {
   return new Promise ((resolve, reject) => {
-    const data = JSON.stringify({
-      'message': 'This should be audio'
-    });
-    
     const options = {
       hostname: 'localhost',
       port: 8081,
       path: '',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
+        'Content-Type': 'application/octet-stream',
+        'Content-Length': reqMessage.length
       }
     };
     
@@ -33,7 +29,7 @@ callSTT : function (reqMessage)
       reject(error);
     });
     
-    req.write(data);
+    req.write(reqMessage);
     req.end();
   });
 }

@@ -10,7 +10,7 @@ http.createServer(function(req, res)
 	let body = '';
 	req.on('data', chunk => { body += chunk });
 	req.on('end', () => {
-		let reqMessage = JSON.parse(body).message;
+		let reqMessage = body;
 		console.log("[MSG]: Received request ("+reqMessage+")");
 	
 		var pyOptions = {

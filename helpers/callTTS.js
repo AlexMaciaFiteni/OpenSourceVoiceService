@@ -4,9 +4,6 @@ module.exports = {
 callTTS : function (reqMessage)
 {
   return new Promise ((resolve, reject) => {
-    const data = JSON.stringify({
-      'message': reqMessage
-    });
     
     const options = {
       hostname: 'localhost',
@@ -14,8 +11,8 @@ callTTS : function (reqMessage)
       path: '',
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
+        'Content-Type': 'text/plain',
+        'Content-Length': reqMessage.length
       }
     };
     
@@ -33,7 +30,7 @@ callTTS : function (reqMessage)
       reject(error);
     });
     
-    req.write(data);
+    req.write(reqMessage);
     req.end();
   });
 }

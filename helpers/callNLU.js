@@ -10,7 +10,7 @@ callNLU : function (reqMessage)
     });
     const options = {
       hostname: 'localhost',
-      port: 5005,
+      port: 8082,
       path: '/webhooks/rest/webhook',
       method: 'POST',
       headers: {

@@ -2,7 +2,6 @@ const fs = require('fs');
 const http = require('http');
 const port = 8080;
 
-const inputFilepath = './input/prueba_stt_mono.wav';
 const outputFilepath = './tts_out.wav';
 
 const callSTT = require('./helpers/callSTT.js').callSTT;
@@ -19,7 +18,7 @@ http.createServer(function(req, res)
 	req.on('end', () => {
     console.log('Request fully received: ' + body.length);
 
-    callSTT('Useless parameter').then((msgstt) =>
+    callSTT(body).then((msgstt) =>
     {
       console.log("To process: ["+msgstt+"]");
 
