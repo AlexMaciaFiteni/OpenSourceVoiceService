@@ -7,35 +7,26 @@ const port = 8081;
 
 http.createServer(function(req, res)
 {
-	let body = '';
-	req.on('data', chunk => { body += chunk });
+	let body = Buffer.alloc(0);
+	req.on('data', chunk => { 
+		body = Buffer.concat([body, chunk], body.length + chunk.length)
+	});
 	req.on('end', () => {
 		console.log("[MSG]: Received request of "+body.length+" bytes");
 
-		var pyOptions = {
-			mode: 'text',
-			args: ['./input/prueba_stt_mono.wav']
-		};
-		/*
-		var pyOptions = { 
-			mode: 'binary',
-			args: [body]
-		};
-		*/
-		
-		var pysh = new PythonShell(myPythonScriptPath, pyOptions);
+		var pysh = new PythonShell(myPythonScriptPath, { mode:'binary' });
+		pysh.send(body);
 		
 		let result = '';
-		pysh.on('message', function(message) {
-			console.log("[MSG]: "+message);
-			result += message;
+		pysh.stdout.on('data', function(message) {
+			console.log("[MSG]: "+message.toString());
+			result += message.toString();
 		});
 		
 		pysh.end(function(err) {
 			if(err) { throw err; };
 		
 			res.write(result);
-			//if(result=='') res.write('Hello there!');
 			res.end();
 			console.log('Finished!');
 		});

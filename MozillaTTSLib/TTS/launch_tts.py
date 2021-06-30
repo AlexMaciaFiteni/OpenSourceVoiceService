@@ -24,9 +24,7 @@ use_cuda = False
 def tts(model, text, CONFIG, use_cuda, ap, OUT_FILE):
     waveform, alignment, spectrogram, mel_spectrogram, stop_tokens = synthesis(model, text, CONFIG, use_cuda, ap)
     ap.save_wav(waveform, OUT_FILE)
-    return alignment, spectrogram, stop_tokens
-
-
+    return waveform
 
 def load_model(MODEL_PATH, sentence, CONFIG, use_cuda, OUT_FILE):
 	# load the model
@@ -37,7 +35,6 @@ def load_model(MODEL_PATH, sentence, CONFIG, use_cuda, OUT_FILE):
 	# CONFIG.audio["power"] = 1.3
 	CONFIG.audio["preemphasis"] = 0.97
 	ap = AudioProcessor(**CONFIG.audio)
-
 
 	# load model state
 	if use_cuda:
@@ -51,10 +48,9 @@ def load_model(MODEL_PATH, sentence, CONFIG, use_cuda, OUT_FILE):
 		model.cuda()
 	model.eval()
 
-
 	model.eval()
 	model.decoder.max_decoder_steps = 1000
-	align, spec, stop_tokens = tts(model, sentence, CONFIG, use_cuda, ap, OUT_FILE)
+	waveform = tts(model, sentence, CONFIG, use_cuda, ap, OUT_FILE)
 
 if __name__ == '__main__':
 	# TODO: Controlar si hay argumento 1

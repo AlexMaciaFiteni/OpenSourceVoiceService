@@ -30,8 +30,6 @@ http.createServer(function(req, res)
         msgnlu = parsed[0].text;
         console.log('Chatbot said: ['+msgnlu+"]");
         
-        // TODO:: Don't override
-        msgnlu = 'This is a test sentence haha'; console.log(" > Overriding to ["+msgnlu+"]");
         callTTS(msgnlu).then((msgtts) =>
         {
           console.log("TTS finished");
