@@ -1,0 +1,25 @@
+stories:
+ - story: ask next appointment
+   steps:
+   - intent: ask_appointment
+   - action: utter_next_appointment
+ - story: ask medicine
+   steps:
+   - intent: ask_medicine
+   - action: utter_medicine
+ - story: contact people
+   steps:
+   - intent: contact_people
+   - action: utter_medicine
+ - story: set reminder
+   steps:
+   - intent: set_reminder
+   - action: utter_medicine
+ - story: report health problem
+   steps:
+   - intent: report_health_problem
+   - action: utter_medicine
+ - story: play music
+   steps:
+   - intent: entertainment
+   - action: utter_medicine

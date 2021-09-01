@@ -1,0 +1,15 @@
+rules:
+ - rule: ask appointment specialist
+   steps:
+   - intent: ask_next_appointment
+   - action: utter_ask_specialist_appointment
+   - action: appointment_specialist_form
+   - active_loop: appointment_specialist_form
+
+ - rule: submit appointment specialist form
+   condition:
+   - active_loop: appointment_specialist_form
+   steps:
+   - action: appointment_specialist_form
+   - active_loop: null
+   - action: utter_specialist_appointment
