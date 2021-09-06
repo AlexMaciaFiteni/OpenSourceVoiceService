@@ -11,6 +11,7 @@ http.createServer(function(req, res)
 	req.on('data', chunk => { body += chunk });
 	req.on('end', () => {
 		let reqMessage = body;
+		let access_time = Date.now();
 		console.log("[MSG]: Received request ("+reqMessage+")");
 	
 		var pyOptions = {
@@ -27,14 +28,11 @@ http.createServer(function(req, res)
 		});
 	
 		pysh.end(function(err) {
-			if(err){
-				throw err;
-			};
+			if(err){ throw err; };
 	
 			res.write(result);
 			res.end();
-	
-			console.log('Finished!');
+			console.log('Finished! (in'+(Date.now() - access_time)+' ms)');
 		});
 	});
 

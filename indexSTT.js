@@ -12,6 +12,7 @@ http.createServer(function(req, res)
 		body = Buffer.concat([body, chunk], body.length + chunk.length)
 	});
 	req.on('end', () => {
+		let access_time = Date.now();
 		console.log("[MSG]: Received request of "+body.length+" bytes");
 
 		var pysh = new PythonShell(myPythonScriptPath, { mode:'binary' });
@@ -28,7 +29,7 @@ http.createServer(function(req, res)
 		
 			res.write(result);
 			res.end();
-			console.log('Finished!');
+			console.log('Finished! (in'+(Date.now() - access_time)+' ms)');
 		});
 	});
 

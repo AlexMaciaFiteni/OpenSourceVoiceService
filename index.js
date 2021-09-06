@@ -16,6 +16,7 @@ http.createServer(function(req, res)
   });
 
 	req.on('end', () => {
+		let access_time = Date.now();
     console.log('Request fully received: ' + body.length);
 
     callSTT(body).then((msgstt) =>
@@ -32,7 +33,7 @@ http.createServer(function(req, res)
         
         callTTS(msgnlu).then((msgtts) =>
         {
-          console.log("TTS finished");
+			    console.log('Finished! (in'+(Date.now() - access_time)+' ms)');
           const readStream = fs.createReadStream(outputFilepath);
           readStream.pipe(res);
 
