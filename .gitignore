@@ -1,5 +1,6 @@
 /stt_models
 /tts_models
+/logs/
 
 # Logs
 logs
