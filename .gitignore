@@ -1,6 +1,7 @@
 /stt_models
 /tts_models
 /logs/
+/tts_out.wav
 
 # Logs
 logs
