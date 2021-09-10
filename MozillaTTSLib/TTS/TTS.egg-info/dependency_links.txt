@@ -1,1 +1,1 @@
-http://github.com/bootphon/phonemizer/tarball/master#egg=phonemizer
+
