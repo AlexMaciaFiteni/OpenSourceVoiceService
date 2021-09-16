@@ -6,16 +6,26 @@ CMD_ASR="node indexSTT.js"
 CMD_TTS="node indexTTS.js"
 CMD_NLP="rasa run --enable-api -p 8082"
 
+VENV="../rasa-test/venv/bin/activate"
+VENV_RASA="../rasavenv/bin/activate"
+
 mkdir -p ${LOGFLD}
 
+source ${VENV}
+
 echo "Lanzando todo, fecha = "${TMPDATE}
+
 echo "Lanzando index.js..."
 nohup ${CMD_VS} > ${LOGFLD}/${TMPDATE}-index.out 2> ${LOGFLD}/${TMPDATE}-index.err < /dev/null &
+
 echo "Lanzando indexSTT.js..."
 nohup ${CMD_ASR} > ${LOGFLD}/${TMPDATE}-stt.out 2> ${LOGFLD}/${TMPDATE}-stt.err < /dev/null &
+
 echo "Lanzando indexTTS.js..."
 nohup ${CMD_TTS} > ${LOGFLD}/${TMPDATE}-tts.out 2> ${LOGFLD}/${TMPDATE}-tts.err < /dev/null &
+
 echo "Lanzando Rasa..."
+source ${VENV_RASA}
 cd Rasa
 nohup ${CMD_NLP} > ../${LOGFLD}/${TMPDATE}-nlp.out 2> ../${LOGFLD}/${TMPDATE}-nlp.err < /dev/null &
 cd ..
