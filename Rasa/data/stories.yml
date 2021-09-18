@@ -1,11 +1,19 @@
+version: "2.0"
+
 stories:
- - story: ask next appointment
+ - story: demo video
    steps:
-   - intent: ask_appointment
-   - action: utter_next_appointment
+   - intent: ask_time # ¿Qué hora es?
+   - action: utter_tell_time # Hola Paquita, son las 2 y 35 de la tarde
+   - intent: thanks # Gracias
+   - action: utter_you_are_welcome_plus # De nada, ¿deseas algo más?
+   - intent: ask_soon_medicine # Sí, ¿Tengo que tomarme alguna pastilla pronto?
+   - action: utter_soon_medicine # No tienes pastillas pendientes ahora. Pero tienes que tomarte el paracetamol a las 4 de la tarde ¿Quieres que te lo recuerde?
+   - intent: affirm # Sí, gracias
+   - action: utter_confirmation # Muy bien Paquita, te lo recordaré
  - story: ask medicine
    steps:
-   - intent: ask_medicine
+   - intent: ask_next_medicine
    - action: utter_medicine
  - story: contact people
    steps:

@@ -1,5 +1,0 @@
-forms:
-  appointment_specialist_form:
-    required_slots:
-      specialist:
-      - type: from_text

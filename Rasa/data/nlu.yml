@@ -1,0 +1,58 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - Hola
+    - Saludos
+
+- intent: affirm
+  examples: |
+    - Sí
+    - Vale
+    - Correcto
+    - Por supuesto
+
+- intent: thanks
+  examples: |
+    - Gracias
+    - Muchas gracias
+    - Te estoy muy agradecido
+    - Te estoy muy agradecida
+
+- intent: ask_time
+  examples: |
+    - ¿Qué hora es?
+    - ¿Puedes decirme la hora?
+    - Dime la hora
+
+- intent: ask_next_appointment
+  examples: |
+    - ¿Cuál es mi siguiente cita con el médico?
+    - Dime mi siguiente cita con el médico
+
+- intent: ask_next_medicine
+  examples: |
+    - ¿Cuál es la siguiente pastilla que tengo que tomarme?
+    - ¿Qué pastilla tendré que tomarme después?
+
+- intent: ask_soon_medicine
+  examples: |
+    - ¿Tengo que tomarme alguna pastilla pronto?
+    - ¿Alguna pastilla para ahora?
+
+- intent: contact_people
+  examples: |
+    - Llama a mi hijo
+
+- intent: set_reminder
+  examples: |
+    - Avísame a las siete
+
+- intent: report_health_problem
+  examples: |
+    - Me duele mucho la cabeza
+
+- intent: entertainment
+  examples: |
+    - Pon algo de música

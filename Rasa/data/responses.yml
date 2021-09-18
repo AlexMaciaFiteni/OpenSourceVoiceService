@@ -1,0 +1,35 @@
+version: "2.0"
+
+responses:
+   utter_greet:
+       - text: |
+           Hola! ¿Puedo ayudarte en algo?
+       - text: |
+           Saludos humano
+   utter_tell_time:
+       - text: |
+            Hola Paquita, son las 2 y 35 de la tarde
+   utter_next_appointment:
+       - text: |
+           Tu siguiente cita médica es con el doctor Blabla en el centro de salud a las cinco y cuarto de la tarde, consulta número 35
+   utter_ask_specialist_appointment:
+       - text: |
+           ¿Con qué médico quieres consultar tu siguiente cita?
+   utter_specialist_appointment:
+       - text: |
+           Tu siguiente cita con {specialist} es el martes a las nueve de la mañana
+   utter_medicine:
+       - text: |
+           Toma la pastilla Frenadol a las cinco de la tarde
+   utter_soon_medicine:
+       - text: |
+           No tienes pastillas pendientes ahora. Pero tienes que tomarte el paracetamol a las 4 de la tarde ¿Quieres que te lo recuerde?
+   utter_you_are_welcome:
+       - text: |
+           De nada
+   utter_you_are_welcome_plus:
+       - text: |
+           De nada, ¿deseas algo más?
+   utter_confirmation:
+       - text: |
+           Muy bien Paquita, te lo recordaré

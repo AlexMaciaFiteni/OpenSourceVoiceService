@@ -1,0 +1,34 @@
+version: "2.0"
+# Rasa version -> 2.8.6
+
+intents:
+- greet
+- affirm
+- thanks
+- ask_time
+- ask_next_appointment
+- ask_next_medicine
+- ask_soon_medicine
+- contact_people
+- set_reminder
+- report_health_problem
+- entertainment
+
+forms:
+  appointment_specialist_form:
+    required_slots:
+      specialist:
+      - type: from_text
+
+slots:
+  specialist:
+    type: text
+    influence_conversation: false
+
+actions:
+- action_hello_world
+- appointment_specialist_form
+           
+session_config:
+  session_expiration_time: 60  # value in minutes
+  carry_over_slots_to_new_session: true
